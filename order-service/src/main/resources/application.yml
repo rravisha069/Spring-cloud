@@ -1,0 +1,28 @@
+server:
+  port: 9091
+spring:
+  cloud:
+    config:
+      uri: http://localhost:9096
+  config:
+    import: "optional:configserver:"
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:~/order
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+  application:
+    name: order-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
